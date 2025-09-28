@@ -1,16 +1,14 @@
-Our project aims to analyze the socio-economic and demographic determinants of child stunting in India using the National Family Health Survey (NFHS-5) dataset. The objectives are:
+This project leverages NFHS-5 data to examine how socio-economic factors such as education, sanitation, wealth, and healthcare access influence child malnutrition in India. Using statistical analysis and machine learning models, the study identifies key predictors and provides insights for effective policy interventions.
 
-To apply probability and statistical methods (hypothesis testing, regression analysis) to identify significant predictors of child stunting.
+Objectives
 
-To build a logistic regression model and evaluate its predictive accuracy.
+•	Analyze NFHS-5 data on nutrition and socio-economic indicators.
 
-To explore regional and household-level variations in stunting outcomes.
+•	Apply probability and statistical methods to detect significant risk factors.
 
-To practice version control and collaborative coding using GitHub.
+•	Develop ML models to predict child malnutrition outcomes.
 
-Name of Your Selected Dataset:
-National Family Health Survey (NFHS-5)
+•	Evaluate and interpret model results to highlight major determinants.
 
-Description of Your Selected Dataset (data source, number of variables, size of dataset, etc.):
-The NFHS-5 dataset is a nationally representative survey conducted by the Ministry of Health and Family Welfare, Government of India, and available through data.gov.in
-. It includes demographic, socio-economic, and health indicators at the household, woman, and child levels. The dataset contains hundreds of variables across nutrition, maternal and child health, and family planning, with sample sizes covering over 600,000 households and millions of individual records.
+•	Suggest data-driven recommendations for public health policies.
+

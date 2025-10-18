@@ -7,12 +7,11 @@
 
 ## 📋 Table of Contents  
 1. [Project Introduction / Objective](#project-introduction--objective)  
-2. [Installation](#installation)  
-3. [Project Description](#project-description)  
-4. [Methods Used](#methods-used)  
-5. [Technologies](#technologies)  
-6. [License](#license)  
-7. [Acknowledgments](#acknowledgments)  
+2. [Project Description](#project-description)  
+3. [Methods Used](#methods-used)  
+4. [Technologies](#technologies)  
+5. [License](#license)  
+6. [Acknowledgments](#acknowledgments)  
 
 ---
 
@@ -27,12 +26,6 @@ By integrating **statistical methods and machine learning**, the study aims to u
 - Develop machine learning models to predict child malnutrition outcomes.  
 - Evaluate and interpret model results to highlight major determinants.  
 - Suggest data-driven recommendations for public health policies.  
-
----
-
-## ⚙️ Installation  
-
-See the [setup.md](setup.md) file for detailed installation and configuration instructions.
 
 ---
 

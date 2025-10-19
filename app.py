@@ -9,7 +9,7 @@ with open('malnutrition_model.pkl', 'rb') as f:
     pipeline = pickle.load(f)
 
 # -----------------------------
-# Numeric features expected
+# Expected Feature Columns (same as training)
 # -----------------------------
 numeric_features = [
     'Children under age 6 months exclusively breastfed16 (%)',
@@ -38,7 +38,7 @@ numeric_features = [
 ]
 
 # -----------------------------
-# Target columns
+# Target Columns
 # -----------------------------
 target_cols = [
     'Children under 5 years who are stunted (height-for-age)18 (%)',
@@ -51,29 +51,37 @@ target_cols = [
 # -----------------------------
 st.title("Predict Child Malnutrition Indicators (NFHS-5 Data)")
 
-st.write("""
-Enter socio-economic and child/maternal health indicators below to predict:
-- Stunting (Height-for-Age)
-- Wasting (Weight-for-Height)
-- Underweight (Weight-for-Age)
-""")
+st.write("Upload your Excel file containing socio-economic and health indicators.")
 
-# Collect user input
-user_input = {}
-for feature in numeric_features:
-    user_input[feature] = st.number_input(feature, value=0.0, step=1.0)
+# Upload Excel
+uploaded_file = st.file_uploader("Upload Excel (.xlsx)", type=["xlsx"])
 
-# Convert to DataFrame
-input_df = pd.DataFrame([user_input])
+if uploaded_file is not None:
+    df = pd.read_excel(uploaded_file)
 
-# Predict button
-if st.button("Predict"):
-    try:
-        predictions = pipeline.predict(input_df)
-        prediction_df = pd.DataFrame(predictions, columns=target_cols)
-        
-        st.subheader("Predicted Child Malnutrition Indicators")
-        st.table(prediction_df)
-        
-    except Exception as e:
-        st.error(f"Error in prediction: {e}")
+    st.subheader("Preview of Uploaded Data")
+    st.dataframe(df.head())
+
+    # Select row
+    row_index = st.number_input("Select Row Index for Prediction", min_value=0, max_value=len(df)-1, step=1)
+
+    # Extract selected input
+    input_df = df[numeric_features].iloc[[row_index]]
+
+    # Predict button
+    if st.button("Predict"):
+        try:
+            predictions = pipeline.predict(input_df)
+            prediction_df = pd.DataFrame(predictions, columns=target_cols)
+
+            st.subheader("✅ Predicted Child Malnutrition Indicators")
+            st.table(prediction_df)
+
+            st.subheader("📌 Input Data Used")
+            st.dataframe(input_df.T.rename(columns={0: "Value"}))
+
+
+        except Exception as e:
+            st.error(f"Error in prediction: {e}")
+else:
+    st.info("Please upload an Excel file to proceed.")
